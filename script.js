@@ -7,29 +7,15 @@ let square;
 let allSquares;
 let elBox = [];
 let numberOfGrid = 16;
+
+
+
 function start(){
     makeSquare(numberOfGrid);
     hovering();
 }
 
-
-function sendPopup(){
-    numberOfGrid = window.prompt("Enter the number of grid betwen  1-100", 0)
-}
-
-
-
-btn.addEventListener("click", sendPopup)
-btn.addEventListener("click", f=> {allSquares.forEach((el) => el.parentNode.removeChild(el))})
-btn.addEventListener("click", start)
-
-btn.addEventListener("click", f => {while(elBox.length > 0) {
-    elBox.pop();}
-})
-clrBtn.addEventListener("click", clear)
-
-
-
+// Boxes
 function makeSquare(numberOfGrid){
     for(let i=0; i< numberOfGrid*numberOfGrid; i++){
 square=document.createElement("div");
@@ -39,6 +25,26 @@ gridBox.appendChild(square)
     }
 }
 
+
+// setting up New grid Button
+function sendPopup(){
+    numberOfGrid = window.prompt("Enter the number of grid betwen  1-100", 0)
+}
+
+btn.addEventListener("click", sendPopup)
+btn.addEventListener("click", f=> {allSquares.forEach((el) => el.parentNode.removeChild(el))})
+btn.addEventListener("click", start)
+
+btn.addEventListener("click", f => {while(elBox.length > 0) {
+    elBox.pop();}
+})
+// Clear Button 
+clrBtn.addEventListener("click", clear)
+
+
+
+
+//Generating Random Color
 function randomColor(){
     //random number between 0 and 15
     const hexArray = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
@@ -52,6 +58,7 @@ return `#${code}`;
 }
 
 
+//Hovering Effect (adding RGB)
 function hovering (){
     allSquares = document.querySelectorAll(".sqr")
     allSquares.forEach((el) => el.addEventListener("mouseover", f => {el.style.background= randomColor()}))}
