@@ -2,6 +2,7 @@
 
 const gridBox = document.querySelector(".container");
 const btn = document.querySelector(".resetButton");
+const clrBtn = document.querySelector(".clear");
 let square;
 let allSquares;
 let elBox = [];
@@ -25,6 +26,8 @@ btn.addEventListener("click", start)
 btn.addEventListener("click", f => {while(elBox.length > 0) {
     elBox.pop();}
 })
+clrBtn.addEventListener("click", clear)
+
 
 
 function makeSquare(numberOfGrid){
@@ -53,4 +56,9 @@ function hovering (){
     allSquares = document.querySelectorAll(".sqr")
     allSquares.forEach((el) => el.addEventListener("mouseover", f => {el.style.background= randomColor()}))}
 
+    function clear(){
+        allSquares = document.querySelectorAll(".sqr")
+        allSquares.forEach((el) => el.style.background= "white")}
+
+    
 start();
